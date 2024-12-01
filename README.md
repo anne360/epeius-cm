@@ -1,235 +1,211 @@
 # epeius
-这是一个基于 CF Worker 平台的脚本，在原版的基础上修改了显示 Trojan 配置信息转换为订阅内容。使用该脚本，你可以方便地将 Trojan 配置信息使用在线配置转换到 Clash 或 Singbox 等工具中。
+This is a script based on the CF Worker platform. It modifies the original version to display Trojan configuration information and convert it into subscription content. Using this script, you can easily convert Trojan configuration information to tools such as Clash or Singbox using online configuration.
 
-- **一步到位**部署视频教程：https://youtu.be/MBlAqYajVSY ***小白必看 一步到胃 最佳推荐!!!***
-- **自制优选**订阅视频教程：https://youtu.be/jOhq3QpXG_I *折腾自己的专属订阅*
-- **进阶使用**技巧视频教程：https://youtu.be/0Cd8uTNJj1Q *然后成为折腾的王*
+- **One-step deployment** video tutorial: https://youtu.be/MBlAqYajVSY ***A must-see for beginners, one-step to the stomach, best recommendation!!!***
+- **Self-made preferred** subscription video tutorial: https://youtu.be/jOhq3QpXG_I *Toss your own exclusive subscription*
+- **Advanced use** skills video tutorial: https://youtu.be/0Cd8uTNJj1Q *Then become the king of tossing*
 
-Telegram交流群：[@CMLiussss](https://t.me/CMLiussss)，**感谢[Alice Networks](https://url.cmliussss.com/alice)提供的云服务器维持[CM订阅转换服务](https://sub.fxxk.dedyn.io/)！**
+Telegram communication group: [@CMLiussss](https://t.me/CMLiussss), **Thanks to [Alice Networks](https://url.cmliussss.com/alice) for providing cloud servers to maintain [CM subscription conversion service](https://sub.fxxk.dedyn.io/)! **
 
-# 免责声明
+# Disclaimer
 
-本免责声明适用于 GitHub 上的 “epeius” 项目（以下简称“本项目”），项目链接为：https://github.com/cmliu/epeius 。
+This disclaimer applies to the "epeius" project on GitHub (hereinafter referred to as "this project"), the project link is: https://github.com/cmliu/epeius .
 
-### 用途
-本项目仅供教育、研究和安全测试目的而设计和开发。旨在为安全研究人员、学术界人士及技术爱好者提供一个探索和实践网络通信技术的工具。
+### Purpose
+This project is designed and developed for educational, research and security testing purposes only. It aims to provide a tool for security researchers, academics and technology enthusiasts to explore and practice network communication technology.
 
-### 合法性
-在下载和使用本项目代码时，必须遵守使用者所适用的法律和规定。使用者有责任确保其行为符合所在地区的法律框架、规章制度及其他相关规定。
+### Legality
+When downloading and using the code of this project, you must comply with the laws and regulations applicable to the user. It is the responsibility of the user to ensure that his or her behavior complies with the legal framework, rules and regulations and other relevant regulations of the region in which he or she is located.
 
-### 免责
-1. 作为本项目的 **二次开发作者**（以下简称“作者”），我 **cmliu** 强调本项目仅应用于合法、道德和教育目的。
-2. 作者不认可、不支持亦不鼓励任何形式的非法使用。如果发现本项目被用于任何非法或不道德的活动，作者将对此强烈谴责。
-3. 作者对任何人或组织利用本项目代码从事的任何非法活动不承担责任。使用本项目代码所产生的任何后果，均由使用者自行承担。
-4. 作者不对使用本项目代码可能引起的任何直接或间接损害负责。
-5. 为避免任何意外后果或法律风险，使用者应在使用本项目代码后的 24 小时内删除代码。
+### Disclaimer
+1. As the **secondary development author** of this project (hereinafter referred to as the "author"), I **cmliu** emphasize that this project should only be used for legal, ethical and educational purposes.
+2. The author does not approve, support or encourage any form of illegal use. If it is found that this project is used for any illegal or unethical activities, the author will strongly condemn it.
+3. The author is not responsible for any illegal activities carried out by any person or organization using the code of this project. Any consequences arising from the use of the code of this project shall be borne by the user.
+4. The author is not responsible for any direct or indirect damage that may be caused by the use of the code of this project.
+5. To avoid any unexpected consequences or legal risks, users should delete the code within 24 hours after using the code of this project.
 
-通过使用本项目代码，使用者即表示理解并同意本免责声明的所有条款。如使用者不同意这些条款，应立即停止使用本项目。
+By using the code of this project, users understand and agree to all the terms of this disclaimer. If users do not agree to these terms, they should stop using this project immediately.
 
-作者保留随时更新本免责声明的权利，且不另行通知。最新版本的免责声明将发布在本项目的 GitHub 页面上。
+The author reserves the right to update this disclaimer at any time without further notice. The latest version of the disclaimer will be published on the GitHub page of this project.
 
-## 风险提示
-- 通过提交虚假的节点配置给订阅服务，避免节点配置信息泄露。
-- 另外，您也可以选择自行部署 [WorkerVless2sub 订阅生成服务](https://github.com/cmliu/WorkerVless2sub)，这样既可以利用订阅生成器的便利。
+## Risk Warning
+- Avoid node configuration information leakage by submitting false node configuration to the subscription service.
+- In addition, you can also choose to deploy [WorkerVless2sub Subscription Generation Service](https://github.com/cmliu/WorkerVless2sub) by yourself, so that you can take advantage of the convenience of the subscription generator.
 
-## Workers 部署方法 [视频教程](https://www.youtube.com/watch?v=MBlAqYajVSY&t=169s)
+## Workers Deployment Method [Video Tutorial](https://www.youtube.com/watch?v=MBlAqYajVSY&t=169s)
+1. Deploy CF Worker:
+- Create a new Worker in the CF Worker console.
+- Paste the contents of [worker.js](https://github.com/cmliu/epeius/blob/main/_worker.js) into the Worker editor.
+- Change the third line `password` to your own **password**
 
-<details>
-<summary><code><strong>「 Workers 部署文字教程 」</strong></code></summary>
+2. Add preferred lines:
 
-1. 部署 CF Worker：
-   - 在 CF Worker 控制台中创建一个新的 Worker。
-   - 将 [worker.js](https://github.com/cmliu/epeius/blob/main/_worker.js) 的内容粘贴到 Worker 编辑器中。
-   - 将第 3 行 `password` 修改成你自己的 **密码**
+- Add preferred domain names/preferred IPs to `addresses` in the format. If the port number is not included, the default TLS port is 443. The # sign is followed by a remark alias, for example:
+```js
+let addresses = [
+// Enable local preferred domain names/preferred IPs when sub is empty
+'www.visa.com.sg#Official preferred domain name',
+'www.wto.org:8443#Official preferred domain name',
+'visa.cn:2087',
+'icook.hk',
+];
+```
+- Or add the **Trojan preferred subscription generator** address to `sub`, for example:
+```js
+let sub = 'Trojan.fxxk.dedyn.io';
+```
 
-2. 添加优选线路:
-   - 给 `addresses` 按格式添加优选域名/优选IP，若不带端口号 TLS默认端口为443，#号后为备注别名，例如：
-     ```js
-     let addresses = [
-     	//当sub为空时启用本地优选域名/优选IP
-     	'www.visa.com.sg#官方优选域名',
-     	'www.wto.org:8443#官方优选域名',
-     	'visa.cn:2087',
-     	'icook.hk',
-     ];
-     ```
-   - 或 给 `sub` 添加 **Trojan优选订阅生成器** 地址，例如：
-     ```js
-     let sub = 'Trojan.fxxk.dedyn.io';
-     ```
+3. Access subscription content:
+- Access `https://[YOUR-WORKERS-URL]/[PASSWORD]` to get the subscription content.
+- For example, `https://vless.google.workers.dev/auto` is your universal adaptive subscription address.
+- For example, `https://vless.google.workers.dev/auto?sub` Base64 subscription format, suitable for PassWall, SSR+, etc.
+- For example, `https://vless.google.workers.dev/auto?clash` Clash subscription format, suitable for OpenClash, etc.
+- For example, `https://vless.google.workers.dev/auto?sb` singbox subscription format, suitable for singbox, etc.
 
-3. 访问订阅内容：
-   - 访问 `https://[YOUR-WORKERS-URL]/[PASSWORD]` 即可获取订阅内容。
-   - 例如 `https://trojan.google.workers.dev/auto` 就是你的通用自适应订阅地址。
-   - 例如 `https://trojan.google.workers.dev/auto?sub` Base64订阅格式，适用PassWall,SSR+等。
-   - 例如 `https://trojan.google.workers.dev/auto?clash` Clash订阅格式，适用OpenClash等。
-   - 例如 `https://trojan.google.workers.dev/auto?sb` singbox订阅格式，适用singbox等。
+4. Bind custom domains to workers:
+- In the `Triggers` tab of the workers console, click `Add custom domain` at the bottom.
+- Fill in the secondary domain name you have transferred to the CF domain name resolution service, for example: `vless.google.com`, then click `Add custom domain` and wait for the certificate to take effect.
 
-4. 给 workers绑定 自定义域： 
-   - 在 workers控制台的 `触发器`选项卡，下方点击 `添加自定义域`。
-   - 填入你已转入 CF 域名解析服务的次级域名，例如:`trojan.google.com`后 点击`添加自定义域`，等待证书生效即可。
+## Pages upload deployment method
+1. Deploy CF Pages:
+- Download the [main.zip](https://github.com/cmliu/epeius/archive/refs/heads/main.zip) file and click Star!!!
+- After selecting `Upload assets` in the CF Pages console, name your project and click `Create project`, then upload the downloaded [main.zip](https://github.com/cmliu/epeius/archive/refs/heads/main.zip) file and click `Deploy site`.
+- After the deployment is complete, click `Continue processing site`, select `Settings` > `Environment variables` > **Make** define variables for production environment > `Add variables`.
+Fill in **PASSWORD** for the variable name, and the value is your password, then click `Save`.
+- Return to the `Deployment` tab, click `Create New Deployment` in the lower right corner, re-upload the [main.zip](https://github.com/cmliu/epeius/archive/refs/heads/main.zip) file, and click `Save and Deploy`.
 
-</details>
+2. Add preferred routes:
+- Add variable `ADD` Local static preferred routes, if no port number is included, the default TLS port is 443, and the # sign is followed by a remark alias, for example:
+```
+12315.cf.090227.xyz:443#Join my channel t.me/CMLiussss to unlock more preferred nodes
+visa.cn#You can only put the domain name as follows
+www.visa.com.sg
+time.is#You can also put the domain name with the port as follows
+www.wto.org:8443
+chatgpt.com:2087#The node name can be placed after the # sign
+icook.hk#If no port number is included, the default port is 443
+104.17.152.41#IP is also OK
+[2606:4700:e7:25:4b9:f8f8:9bfb:774a]#IPv6 is also OK
+```
 
-## Pages 上传 部署方法
+3. Access subscription content:
+- Visit `https://[YOUR-PAGES-URL]/[PASSWORD]` to get subscription content.
+- For example, `https://epeius.pages.dev/auto` is your universal adaptive subscription address.
+- For example, `https://epeius.pages.dev/auto?sub` Base64 subscription format, suitable for PassWall, SSR+, etc.
+- For example, `https://epeius.pages.dev/auto?clash` Clash subscription format, suitable for OpenClash, etc.
+- For example, `https://epeius.pages.dev/auto?sb` singbox subscription format, suitable for singbox, etc.
+- For example, `https://epeius.pages.dev/auto?surge` surge subscription format, suitable for surge 4/5.
 
-<details>
-<summary><code><strong>「 Pages 上传文件部署文字教程 」</strong></code></summary>
+4. Bind CNAME custom domain to Pages:
+- In the `Custom Domains` tab of the Pages console, click `Set Custom Domain` below.
+- Fill in your custom subdomain name, be careful not to use your root domain name, for example:
+If the domain name you are assigned is `fuck.cloudns.biz`, then add a custom domain and fill in `lizi.fuck.cloudns.biz`;
+- According to CF's requirements, your domain name DNS service provider will be returned. After adding the CNAME record `epeius.pages.dev` of the custom domain `lizi`, click `Activate Domain`.
 
-1. 部署 CF Pages：
-   - 下载 [main.zip](https://github.com/cmliu/epeius/archive/refs/heads/main.zip) 文件，并点上 Star !!!
-   - 在 CF Pages 控制台中选择 `上传资产`后，为你的项目取名后点击 `创建项目`，然后上传你下载好的 [main.zip](https://github.com/cmliu/epeius/archive/refs/heads/main.zip) 文件后点击 `部署站点`。
-   - 部署完成后点击 `继续处理站点` 后，选择 `设置` > `环境变量` > **制作**为生产环境定义变量 > `添加变量`。
-     变量名称填写**PASSWORD**，值则为你的密码，后点击 `保存`即可。
-   - **重中之重！ `设置` > `运行时` > `兼容性标志` > `nodejs_compat`**，后点击 `保存`即可。
-   - 返回 `部署` 选项卡，在右下角点击 `创建新部署` 后，重新上传 [main.zip](https://github.com/cmliu/epeius/archive/refs/heads/main.zip) 文件后点击 `保存并部署` 即可。
+## Pages GitHub Deployment Method [Video Tutorial](https://www.youtube.com/watch?v=0Cd8uTNJj1Q&t=96s)
+1. Deploy CF Pages:
+- Fork this project on Github first and click Star!!!
+- After selecting `Connect to Git` in the CF Pages console, select the `epeius` project and click `Start Setting`.
+- Under the `Set up build and deployment` page, select `Environment variables (advanced)` and click `Add variable`.
+Fill in **PASSWORD** as the variable name and your password as the value. Then click `Save and deploy`.
 
-2. 添加优选线路:
- - 添加变量 `ADD` 本地静态的优选线路，若不带端口号 TLS默认端口为443，#号后为备注别名，例如：
-   ```
-   12315.cf.090227.xyz:443#加入我的频道t.me/CMLiussss解锁更多优选节点
-   visa.cn#你可以只放域名 如下
-   www.visa.com.sg
-   time.is#也可以放域名带端口 如下
-   www.wto.org:8443
-   chatgpt.com:2087#节点名放在井号之后即可
-   icook.hk#若不带端口号默认端口为443
-   104.17.152.41#IP也可以
-   [2606:4700:e7:25:4b9:f8f8:9bfb:774a]#IPv6也OK
-   ```
+2. Add preferred routes:
+- Add variable `ADD` Local static preferred routes, if no port number is included, the default TLS port is 443, and the # sign is followed by a remark alias, for example:
+```
+12315.cf.090227.xyz:443#Join my channel t.me/CMLiussss to unlock more preferred nodes
+visa.cn#You can only put the domain name as follows
+www.visa.com.sg
+time.is#You can also put the domain name with the port as follows
+www.wto.org:8443
+chatgpt.com:2087#The node name can be placed after the # sign
+icook.hk#If no port number is included, the default port is 443
+104.17.152.41#IP is also OK
+[2606:4700:e7:25:4b9:f8f8:9bfb:774a]#IPv6 is also OK
+```
 
-3. 访问订阅内容：
-   - 访问 `https://[YOUR-PAGES-URL]/[PASSWORD]` 即可获取订阅内容。
-   - 例如 `https://epeius.pages.dev/auto` 就是你的通用自适应订阅地址。
-   - 例如 `https://epeius.pages.dev/auto?sub` Base64订阅格式，适用PassWall,SSR+等。
-   - 例如 `https://epeius.pages.dev/auto?clash` Clash订阅格式，适用OpenClash等。
-   - 例如 `https://epeius.pages.dev/auto?sb` singbox订阅格式，适用singbox等。
-   - 例如 `https://epeius.pages.dev/auto?surge` surge订阅格式，适用surge 4/5。
+3. Access subscription content:
+- Visit `https://[YOUR-PAGES-URL]/[PASSWORD]` to get subscription content.
+- For example, `https://epeius.pages.dev/auto` is your universal adaptive subscription address.
+- For example, `https://epeius.pages.dev/auto?sub` Base64 subscription format, suitable for PassWall, SSR+, etc.
+- For example, `https://epeius.pages.dev/auto?clash` Clash subscription format, suitable for OpenClash, etc.
+- For example, `https://epeius.pages.dev/auto?sb` singbox subscription format, suitable for singbox, etc.
+- For example, `https://epeius.pages.dev/auto?surge` surge subscription format, suitable for surge 4/5.
 
-4. 给 Pages绑定 CNAME自定义域：
-   - 在 Pages控制台的 `自定义域`选项卡，下方点击 `设置自定义域`。
-   - 填入你的自定义次级域名，注意不要使用你的根域名，例如：
-     您分配到的域名是 `fuck.cloudns.biz`，则添加自定义域填入 `lizi.fuck.cloudns.biz`即可；
-   - 按照 CF 的要求将返回你的域名DNS服务商，添加 该自定义域 `lizi`的 CNAME记录 `epeius.pages.dev` 后，点击 `激活域`即可。
+4. Bind CNAME custom domain to Pages:
+- In the `Custom Domains` tab of the Pages console, click `Set Custom Domain` at the bottom.
+- Fill in your custom secondaryDomain name, be careful not to use your root domain name, for example:
+If the domain name you are assigned is `fuck.cloudns.biz`, then add a custom domain and fill in `lizi.fuck.cloudns.biz`;
+- According to CF's requirements, your domain name DNS service provider will be returned. After adding the CNAME record `epeius.pages.dev` of the custom domain `lizi`, click `Activate Domain`.
 
-</details>
-
-## Pages GitHub 部署方法 [视频教程](https://www.youtube.com/watch?v=0Cd8uTNJj1Q&t=96s)
-
-<details>
-<summary><code><strong>「 Pages GitHub 部署文字教程 」</strong></code></summary>
-
-1. 部署 CF Pages：
-   - 在 Github 上先 Fork 本项目，并点上 Star !!!
-   - 在 CF Pages 控制台中选择 `连接到 Git`后，选中 `epeius`项目后点击 `开始设置`。
-   - 在 `设置构建和部署`页面下方，选择 `环境变量（高级）`后并 `添加变量`，
-     变量名称填写**PASSWORD**，值则为你的密码，后点击 `保存并部署`即可。
-   - **重中之重！ `设置` > `运行时` > `兼容性标志` > `nodejs_compat`**，后点击 `保存`即可。
-
-2. 添加优选线路:
- - 添加变量 `ADD` 本地静态的优选线路，若不带端口号 TLS默认端口为443，#号后为备注别名，例如：
-   ```
-   12315.cf.090227.xyz:443#加入我的频道t.me/CMLiussss解锁更多优选节点
-   visa.cn#你可以只放域名 如下
-   www.visa.com.sg
-   time.is#也可以放域名带端口 如下
-   www.wto.org:8443
-   chatgpt.com:2087#节点名放在井号之后即可
-   icook.hk#若不带端口号默认端口为443
-   104.17.152.41#IP也可以
-   [2606:4700:e7:25:4b9:f8f8:9bfb:774a]#IPv6也OK
-   ```
-
-3. 访问订阅内容：
-   - 访问 `https://[YOUR-PAGES-URL]/[PASSWORD]` 即可获取订阅内容。
-   - 例如 `https://epeius.pages.dev/auto` 就是你的通用自适应订阅地址。
-   - 例如 `https://epeius.pages.dev/auto?sub` Base64订阅格式，适用PassWall,SSR+等。
-   - 例如 `https://epeius.pages.dev/auto?clash` Clash订阅格式，适用OpenClash等。
-   - 例如 `https://epeius.pages.dev/auto?sb` singbox订阅格式，适用singbox等。
-   - 例如 `https://epeius.pages.dev/auto?surge` surge订阅格式，适用surge 4/5。
-
-4. 给 Pages绑定 CNAME自定义域：
-   - 在 Pages控制台的 `自定义域`选项卡，下方点击 `设置自定义域`。
-   - 填入你的自定义次级域名，注意不要使用你的根域名，例如：
-     您分配到的域名是 `fuck.cloudns.biz`，则添加自定义域填入 `lizi.fuck.cloudns.biz`即可；
-   - 按照 CF 的要求将返回你的域名DNS服务商，添加 该自定义域 `lizi`的 CNAME记录 `epeius.pages.dev` 后，点击 `激活域`即可。
-   
-</details>
-
-## 变量说明
-| 变量名 | 示例 | 备注 |
+## Variable description
+| Variable name | Example | Remarks |
 |--------|---------|-----|
-| PASSWORD | `auto` | 可以取任意值 |
-| PROXYIP | `proxyip.fxxk.dedyn.io:443` | 备选作为访问CFCDN站点的代理节点(支持多ProxyIP, ProxyIP之间使用`,`或`换行`作间隔) |
-| SOCKS5  | `user:password@127.0.0.1:1080` | 优先作为访问CFCDN站点的SOCKS5代理(支持多socks5, socks5之间使用`,`或`换行`作间隔) |
-| GO2SOCKS5  | `blog.cmliussss.com`,`*.ip111.cn`,`*google.com` | 设置`SOCKS5`变量之后，可设置强制使用socks5访问名单(`*`可作为通配符，`换行`作多元素间隔) |
-| ADD | `www.csgo.com:2087,icook.hk` | 本地优选域名/优选IP(支持多元素之间`,`或`换行`作间隔) |
-| ADDAPI | [https://raw.github.../addressesapi.txt](https://raw.githubusercontent.com/cmliu/WorkerVless2sub/main/addressesapi.txt) | 不解释, 懂得都懂 |
-| ADDCSV | [https://raw.github.../addressescsv.csv](https://raw.githubusercontent.com/cmliu/WorkerVless2sub/main/addressescsv.csv) | 不解释, 懂得都懂 |
-| DLS | `8` | `ADDCSV`测速结果满足速度下限 | 
-| TGTOKEN | `6894123456:XXXXXXXXXX0qExVsBPUhHDAbXXXXXqWXgBA` | 发送TG通知的机器人token | 
-| TGID | `6946912345` | 接收TG通知的账户数字ID | 
-| SUB | `Trojan.fxxk.dedyn.io` | 优选订阅生成器地址(使用订阅器将放弃`ADD`内的本地优选订阅内容) |
-| SUBAPI | `SUBAPI.fxxk.dedyn.io` | clash、singbox等 订阅转换后端 |
-| SUBCONFIG | [https://raw.github.../ACL4SSR_Online_Mini.ini](https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Mini.ini) | clash、singbox等 订阅转换配置文件 |
-| SUBNAME | `epeius` | 订阅名称 | 
-| RPROXYIP | `false` | 设为 true 即可强制获取订阅器分配的ProxyIP(需订阅器支持)|
-| URL302 | `https://t.me/CMLiussss` | 主页302跳转(支持多url, url之间使用`,`或`换行`作间隔, 小白别用) |
-| URL | `https://blog.cmliussss.com` | 主页反代伪装(支持多url, url之间使用`,`或`换行`作间隔, 乱设容易触发反诈) |
-| CFPORTS | `2053`,`2096`,`8443` | CF账户标准端口列表 |
+| PASSWORD | `auto` | Can take any value |
+| PROXYIP | `proxyip.fxxk.dedyn.io:443` | Alternative proxy node for accessing CFCDN sites (supports multiple ProxyIPs, use `,` or `newline` as a separator between ProxyIPs) |
+| SOCKS5 | `user:password@127.0.0.1:1080` | Prioritize as a SOCKS5 proxy for accessing CFCDN sites (supports multiple socks5s, use `,` or `newline` as a separator between socks5s) |
+| GO2SOCKS5 | `blog.cmliussss.com`,`*.ip111.cn`,`*google.com` | After setting the `SOCKS5` variable, you can force the use of socks5 access list (`*` can be used as a wildcard, `newline` can be used to separate multiple elements) |
+| ADD | `www.csgo.com:2087,icook.hk` | Local preferred domain name/preferred IP (supports `,` or `newline` between multiple elements as separators) |
+| ADDAPI | [https://raw.github.../addressesapi.txt](https://raw.githubusercontent.com/cmliu/WorkerVless2sub/main/addressesapi.txt) | No explanation, those who understand will understand |
+| ADDCSV | [https://raw.github.../addressescsv.csv](https://raw.githubusercontent.com/cmliu/WorkerVless2sub/main/addressescsv.csv) | No explanation, those who understand will understand |
+| DLS | `8` | `ADDCSV` speed test results meet the lower speed limit |
+| TGTOKEN | `6894123456:XXXXXXXXXX0qExVsBPUhHDAbXXXXXqWXgBA` | Robot token for sending TG notifications |
+| TGID | `6946912345` | Account digital ID for receiving TG notifications |
+| SUB | `Trojan.fxxk.dedyn.io` | Preferred subscription generator address (using the subscriber will abandon the local preferred subscription content in `ADD`) |
+| SUBAPI | `SUBAPI.fxxk.dedyn.io` | Subscription conversion backend such as clash and singbox |
+| SUBCONFIG | [https://raw.github.../ACL4SSR_Online_Mini.ini](https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Mini.ini) | Subscription conversion configuration file such as clash and singbox |
+| SUBNAME | `epeius` | Subscription name |
+| RPROXYIP | `false` | Set to true to force the acquisition of the ProxyIP assigned by the subscriber (subscriber support required) |
+| URL302 | `https://t.me/CMLiussss` | Home page 302 jump (supports multiple URLs, use `,` or `newline` as a separator between URLs, don't use it if you're new to this) |
+| URL | `https://blog.cmliussss.com` | Home page anti-genuine camouflage (supports multiple URLs, use `,` or `newline` as a separator between URLs, random settings can easily trigger anti-fraud) |
+| CFEMAIL | `admin@gmail.com` | CF account email (after filling in `CFKEY`, the subscription information will display the request usage, don't use it if you're new to this) |
+| CFKEY | `c6a944b5c956b6c18c2352880952bced8b85e` | CF account Global API Key (After filling in both `CFEMAIL`, the subscription information will display the request usage, so don't use it if you are new to it) |
+| CFPORTS | `2053`,`2096`,`8443` | CF account standard port list |
 
-**注意: 填入`SOCKS5`后将不再启用`PROXYIP`！请二选一使用！！！**
+**Note: After filling in `SOCKS5`, `PROXYIP` will no longer be enabled! Please choose one of the two! ! ! **
 
-**注意: 填入`SUB`后将不再启用`ADD*`类变量生成的订阅内容！请二选一使用！！！**
+**Note: After filling in `SUB`, the subscription content generated by the `ADD*` class variable will no longer be enabled! Please choose one of the two! ! ! **
 
-## 实用小技巧
+**Note: Filling in `CFEMAIL` and `CFKEY` at the same time will enable the display of request usage, but it is not recommended! There is no need to give a Worker project such high permissions! You will be at your own risk! ! ! **
 
-**该项目部署的订阅可通过添加`sub`键值快速更换优选订阅生成器！** 
-> 例如 `https://epeius.pages.dev/auto` 是你的通用自适应订阅地址
-- 快速更换订阅器为`Trojan.fxxk.dedyn.io`的订阅地址
+## Practical tips
 
-   ```url
-   https://epeius.pages.dev/auto?sub=Trojan.fxxk.dedyn.io
-   ```
+**The subscription deployed by this project can quickly change the preferred subscription generator by adding the `sub` key value! **
+> For example, `https://epeius.pages.dev/auto` is your universal adaptive subscription address
+- Quickly change the subscription address of the subscriber to `Trojan.fxxk.dedyn.io`
 
-**该项目部署的节点可通过节点PATH(路径)的方式，使用指定的`PROXYIP`或`SOCKS5`！！！**
+```url
+https://epeius.pages.dev/auto?sub=Trojan.fxxk.dedyn.io
+```
 
-- 指定 `PROXYIP` 案例
-   ```url
-   /proxyip=proxyip.fxxk.dedyn.io
-   /?proxyip=proxyip.fxxk.dedyn.io
-   /proxyip.fxxk.dedyn.io (仅限于域名开头为'proxyip.'的域名)
-   ```
+**The nodes deployed in this project can use the specified `PROXYIP` or `SOCKS5` through the node PATH (path) method! ! ! **
 
-- 指定 `SOCKS5` 案例
-   ```url
-   /socks5=user:password@127.0.0.1:1080
-   /?socks5=user:password@127.0.0.1:1080
-   /socks://dXNlcjpwYXNzd29yZA==@127.0.0.1:1080
-   /socks5://user:password@127.0.0.1:1080
-   ```
+- Example of specifying `PROXYIP`
+```url
+/proxyip=proxyip.fxxk.dedyn.io
+/?proxyip=proxyip.fxxk.dedyn.io
+/proxyip.fxxk.dedyn.io (only for domains starting with 'proxyip.')
+```
 
-**当你的`ADDAPI`可作为`PROXYIP`时，可在`ADDAPI`变量末位添加`?proxyip=true`，即可在生成节点时使用优选IP自身作为`PROXYIP`**
-- 指定 `ADDAPI` 作为 `PROXYIP` 案例
-   ```url
-   https://raw.githubusercontent.com/cmliu/WorkerVless2sub/main/addressesapi.txt?proxyip=true
-   ```
+- Example of specifying `SOCKS5`
+```url
+/socks5=user:password@127.0.0.1:1080
+/?socks5=user:password@127.0.0.1:1080
+/socks://dXNlcjpwYXNzd29yZA==@127.0.0.1:1080
+/socks5://user:password@127.0.0.1:1080
+```
 
-## Star 星星走起
+**When your `ADDAPI` can be used as a `PROXYIP`, you can add `?proxyip=true` to the end of the `ADDAPI` variable, and then use the preferred IP itself as the `PROXYIP` when generating nodes**
+- Specify `ADDAPI` as a `PROXYIP` example
+```url
+https://raw.githubusercontent.com/cmliu/WorkerVless2sub/main/addressesapi.txt?proxyip=true
+```
+
+## Star Stars Go
 [![Stargazers over time](https://starchart.cc/cmliu/epeius.svg?variant=adaptive)](https://starchart.cc/cmliu/epeius)
 
-## 已适配客户端
+## Adapted Clients
 ### Windows
-   - [v2rayN](https://github.com/2dust/v2rayN)
-   - clash.meta（[FlClash](https://github.com/chen08209/FlClash)，[clash-verge-rev](https://github.com/clash-verge-rev/clash-verge-rev)，[Clash Nyanpasu](https://github.com/keiko233/clash-nyanpasu)）
-### IOS
-   - Surge，小火箭
-   - sing-box（[SFI](https://sing-box.sagernet.org/zh/clients/apple/)）
-### 安卓
-   - clash.meta（[ClashMetaForAndroid](https://github.com/MetaCubeX/ClashMetaForAndroid)，[FlClash](https://github.com/chen08209/FlClash)）
-   - sing-box（[SFA](https://github.com/SagerNet/sing-box)）
-### MacOS
-   - clash.meta（[FlClash](https://github.com/chen08209/FlClash)）
+- [v2rayN](https://github.com/2dust/v2rayN)
+- clash.meta ([FlClash](https://github.com/chen08209/FlClash), [clash-verge-rev](https://github.com/clash-verge-rev/clash-verge-rev), [Clash Nyanpasu](https://github.com/keiko233/clash-nyanpasu)) ### IOS - Surge, little rocket - sing-box（[SFI](https://sing-box.sagernet.org/zh/clients/apple/)） ### Android - clash.meta ([ClashMetaForAndroid](https://github.com/MetaCubeX/ClashMetaForAndroid), [FlClash](https://github.com/chen08209/FlClash)) - sing-box ([SFA](https://github.com/SagerNet/sing-box)) ### MacOS - clash.meta（[FlClash](https://github.com/chen08209/FlClash)）
 
-# 感谢
-[ca110us](https://github.com/ca110us/epeius)、[xream](https://github.com/xream)、[3Kmfi6HP](https://github.com/6Kmfi6HP/EDtunnel)、[zizifn](https://github.com/zizifn/edgetunnel)、[emn178](https://github.com/emn178/js-sha256)、[ACL4SSR](https://github.com/ACL4SSR/ACL4SSR/tree/master/Clash/config)、[SHIJS1999](https://github.com/SHIJS1999/cloudflare-worker-vless-ip)、<a href="https://url.cmliussss.com/alice"><img src="https://alicenetworks.net/templates/lagom2/assets/img/logo/logo_big.194980063.png" width="150" height="75" alt="Alice Networks LTD"/></a>、
+# grateful [ca110us](https://github.com/ca110us/epeius), [xream](https://github.com/xream), [3Kmfi6HP](https://github.com/3Kmfi6HP/EDtunnel/tree/trojan), [zizifn](https://github.com/zizifn/edgetunnel), [emn178](https://github.com/emn178/js-sha256), [ACL4SSR](https://github.com/ACL4SSR/ACL4SSR/tree/master/Clash/config), [SHIJS1999](https://github.com/SHIJS1999/cloudflare-worker-vless-ip), <a href="https://url.cmliussss.com/alice"><img src="https://alicenetworks.net/templates/lagom2/assets/img/logo/logo_big.194980063.png" width="150" height="75" alt="Alice Networks LTD"/></a>,
